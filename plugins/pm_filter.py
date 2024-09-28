@@ -70,33 +70,33 @@ async def group_search(client, message):
             return
             
         if message.text.startswith("/"):
-            return
-            
-        elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            admins = []
-            async for member in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                if not member.user.is_bot:
-                    admins.append(member.user.id)
-                    if member.status == enums.ChatMemberStatus.OWNER:
-                        if message.reply_to_message:
-                            try:
-                                sent_msg = await message.reply_to_message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-                        else:
-                            try:
-                                sent_msg = await message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-            hidden_mentions = (f'[\u2064](tg://user?id={user_id})' for user_id in admins)
-            await message.reply_text('Report sent!' + ''.join(hidden_mentions))
-            return
+    return
 
-        elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+|@\w+', message.text):
+elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
+    if await is_check_admin(client, message.chat.id, message.from_user.id):
+        return
+    admins = []
+    async for member in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+        if not member.user.is_bot:
+            admins.append(member.user.id)
+            if member.status == enums.ChatMemberStatus.OWNER:
+                if message.reply_to_message:
+                    try:
+                        sent_msg = await message.reply_to_message.forward(member.user.id)
+                        await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>Go to message</a>", disable_web_page_preview=True)
+                    except:
+                        pass
+                else:
+                    try:
+                        sent_msg = await message.forward(member.user.id)
+                        await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.link}>Go to message</a>", disable_web_page_preview=True)
+                    except:
+                        pass
+    hidden_mentions = (f'[\u2064](tg://user?id={user_id})' for user_id in admins)
+    await message.reply_text('Report sent!' + ''.join(hidden_mentions))
+    return
+
+elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+|@\w+', message.text):
     if await is_check_admin(client, message.chat.id, message.from_user.id):
         return
     await message.delete()
@@ -1121,4 +1121,3 @@ async def advantage_spell_chok(message, s):
         await message.delete()
     except:
         pass
-
