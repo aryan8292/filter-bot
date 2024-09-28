@@ -97,28 +97,34 @@ async def group_search(client, message):
             return
 
         elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+|@\w+', message.text):
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            await message.delete()
-            return await message.reply('Links not allowed here!')
+    if await is_check_admin(client, message.chat.id, message.from_user.id):
+        return
+    await message.delete()
+    return await message.reply('Links not allowed here!')
         
-        elif '#request' in message.text.lower():
-            if message.from_user.id in ADMINS:
-                return
-            await client.send_message(LOG_CHANNEL, f"#Request\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ Message: {re.sub(r'#request', '', message.text.lower())}")
-            await message.reply_text("Request sent!")
-            return  
-        else:
-            s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>")
-            await data_filter(client, message)
-    else:
-        k = await message.reply_text('Auto Filter Off! ❌')
-        await asyncio.sleep(5)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
+elif '#request' in message.text.lower():
+    if message.from_user.id in ADMINS:
+        return
+    await client.send_message(
+        LOG_CHANNEL, 
+        f"#Request\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ Message: {re.sub(r'#request', '', message.text.lower())}"
+    )
+    await message.reply_text("Request sent!")
+    return  
+
+else:
+    s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>")
+    
+    # Ensure you are passing text or relevant content to data_filter, not the whole message object
+    await data_filter(client, message, s)  # Passing message.text instead of message object
+else:
+    k = await message.reply_text('Auto Filter Off! ❌')
+    await asyncio.sleep(5)
+    await k.delete()
+    try:
+        await message.delete()
+    except:
+        pass
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
