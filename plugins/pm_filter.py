@@ -110,7 +110,7 @@ async def group_search(client, message):
             return  
         else:
             s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>")
-            await data_filter(client, message, s)
+            await data_filter(client, message)
     else:
         k = await message.reply_text('Auto Filter Off! ❌')
         await asyncio.sleep(5)
