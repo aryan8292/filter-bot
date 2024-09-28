@@ -101,9 +101,10 @@ class Bot(Client):
 
 app = Bot()
 
-try:
-    app.run()
-except FloodWait as e:
-    print(f"FloodWait triggered. Waiting for {e.x} seconds.")
-    asyncio.sleep(e.x)  # Wait for the specified time
-    app.run()  # Retry after the wait time
+while True:
+    try:
+        app.run()
+        break  # Exit loop if bot starts successfully
+    except FloodWait as e:
+        print(f"FloodWait triggered. Waiting for {e.value} seconds.")
+        asyncio.run(asyncio.sleep(e.value))  # Wait for the specified time
