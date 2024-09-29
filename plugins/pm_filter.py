@@ -67,7 +67,7 @@ async def group_search(client, message):
                     InlineKeyboardButton("Here", url=FILMS_LINK)
                 ]]
                 await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
-              return    
+            return    
             
         if message.text.startswith("/"):
             return
