@@ -37,7 +37,7 @@ PORT = int(environ.get('PORT', '80')) #don't change anything
 PICS = (environ.get('PICS', 'https://i.postimg.cc/prXPRvsh/IXPs2c-Wx-Tt2-Ep-A5-Dcr6-QQ.webp')).split()
 
 # Bot Admins
-ADMINS = environ.get('ADMINS', '6174868004') #apni tg id daalo
+ADMINS = environ.get('ADMINS', '5079629749') #apni tg id daalo
 if len(ADMINS) == 0:
     print('Error - ADMINS is missing, exiting now')
     exit()
@@ -48,10 +48,10 @@ else:
 INDEX_CHANNELS = [int(index_channels) if index_channels.startswith("-") else index_channels for index_channels in environ.get('INDEX_CHANNELS', '-1002208295766 -1002233820213 -1002227944470 -1002185234412').split()]
 if len(INDEX_CHANNELS) == 0:
     print('Info - INDEX_CHANNELS is empty')
-AUTH_CHANNEL = [int(auth_channels) for auth_channels in environ.get('AUTH_CHANNEL', '-1002233212878').split()]
+AUTH_CHANNEL = [int(auth_channels) for auth_channels in environ.get('AUTH_CHANNEL', '1001756081670').split()]
 if len(AUTH_CHANNEL) == 0:
     print('Info - AUTH_CHANNEL is empty')
-LOG_CHANNEL = environ.get('LOG_CHANNEL', '-1002183671823') #bot log channel -1005293546253
+LOG_CHANNEL = environ.get('LOG_CHANNEL', '-1001517345433') #bot log channel -1005293546253
 if len(LOG_CHANNEL) == 0:
     print('Error - LOG_CHANNEL is missing, exiting now')
     exit()
@@ -60,7 +60,7 @@ else:
 IS_FSUB = is_enabled('IS_FSUB', True)
 
 # support group
-SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '-1002155777503') #support group id ex:  -1002936246860
+SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '-1001756081670') #support group id ex:  -1002936246860
 if len(SUPPORT_GROUP) == 0:
     print('Error - SUPPORT_GROUP is missing, exiting now')
     exit()
@@ -68,19 +68,19 @@ else:
     SUPPORT_GROUP = int(SUPPORT_GROUP)
 
 # MongoDB information
-DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://ayushpritysingh098:z0aMVL9ofTSOGqir@cluster0.9r9gs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") #mongo db url
+DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://unknown4u1082:unknown4u1082@cluster0.hpvim.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") #mongo db url
 if len(DATABASE_URL) == 0:
     print('Error - DATABASE_URL is missing, exiting now')
     exit()
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Files')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'TELEGRAM_FILES')
 
 # Links
-SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/Netfilix_movie_shaport')
-OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/Hansaka_Anuhas")
-UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/+Ie4mNf6lL5RjYjM1')
-FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/n_flixmovie')
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/APSmo/7")
+SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/ARY_BOTZ')
+OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/ARY_BOTZ")
+UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/ARY_BOTZ')
+FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/ARY_BOTZ')
+TUTORIAL = environ.get("TUTORIAL", "https://t.me/ARY_BOTZ/7")
 VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "")
 
 # Bot settings
