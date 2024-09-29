@@ -68,12 +68,12 @@ else:
     SUPPORT_GROUP = int(SUPPORT_GROUP)
 
 # MongoDB information
-DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://unknown4u1082:unknown4u1082@cluster0.hpvim.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") #mongo db url
+DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://Aryan829235:Aryan829235@cluster0.btc4eto.mongodb.net/?retryWrites=true&w=majority") #mongo db url
 if len(DATABASE_URL) == 0:
     print('Error - DATABASE_URL is missing, exiting now')
     exit()
-DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'TELEGRAM_FILES')
+DATABASE_NAME = environ.get('DATABASE_NAME', "Aryan829235")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Links
 SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/ARY_BOTZ')
